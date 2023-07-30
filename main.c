@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:33:43 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/07/28 18:13:12 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/07/30 20:24:10 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	main(int argc, char **argv)
 {
 	t_general	gen;
 
+	get_time();
 	if (argc == 5 || argc == 6)
 	{
 		if (check_valid(argv) == 0)
@@ -72,6 +73,9 @@ int	main(int argc, char **argv)
 		pilos_init(&gen, argv);
 		fork_init(&gen);
 		ft_create(&gen);
+		if (pilo_live(&gen) == 0)
+			return (0);
+		
 	}
 	else
 	{

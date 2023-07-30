@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:36:15 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/07/28 18:41:16 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/07/30 20:17:37 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <stdlib.h>
+# include <sys/time.h>
+# include <time.h>
 
 typedef struct s_philo
 {
@@ -47,17 +49,20 @@ typedef struct s_general
 	pthread_mutex_t	mutex_die;
 }t_general;
 
-int		main(int argc, char **argv);
-char	**ft_split(char const *s, char c);
-long	ft_atoi(const char *str);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *s1);
-int		ft_strlen(const char *str);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	general_init(t_general	*gen, char **str);
-void	pilos_init(t_general	*gen, char **str);
-void	fork_init(t_general	*gen);
-void	ft_create(t_general	*gen);
-int		pilo_die(t_philo *philo);
+int				main(int argc, char **argv);
+char			**ft_split(char const *s, char c);
+long			ft_atoi(const char *str);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+char			*ft_strdup(const char *s1);
+int				ft_strlen(const char *str);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
+void			general_init(t_general	*gen, char **str);
+void			pilos_init(t_general	*gen, char **str);
+void			fork_init(t_general	*gen);
+void			ft_create(t_general	*gen);
+int				pilo_die(t_philo *philo);
+void			ft_usleep(unsigned long sleap, t_philo	*philo);
+unsigned long	get_time(void);
+int				pilo_live(t_general	*gen);
 
 #endif
