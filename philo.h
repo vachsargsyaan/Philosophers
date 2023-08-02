@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:36:15 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/07/30 20:17:37 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:25:38 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void			fork_init(t_general	*gen);
 void			ft_create(t_general	*gen);
 int				pilo_die(t_philo *philo);
 void			ft_usleep(unsigned long sleap, t_philo	*philo);
-unsigned long	get_time(void);
+long long int	get_time(void);
 int				pilo_live(t_general	*gen);
 
 #endif

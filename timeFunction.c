@@ -6,13 +6,13 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:30:22 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/07/30 20:17:31 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:25:28 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-unsigned long	get_time(void)
+long long int	get_time(void)
 {
 	static unsigned long long	start;
 	static int					count = 0;

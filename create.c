@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 16:40:27 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/07/30 20:36:51 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:45:57 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*routine(void (*a))
 	philo = (t_philo *)a;
 	if (philo->id % 2 == 0)
 		usleep(1000);
-	while (pilo_die(philo) == 0)
+	while (!pilo_die(philo))
 	{	
 		pthread_mutex_lock(philo->mutex_left);
 		check_all_live(philo, "He picked up a fork from the left\n");
@@ -57,7 +57,7 @@ void	*routine(void (*a))
 		ft_usleep(philo->time_sleep, philo);
 		check_all_live(philo, "He is thinking\n");
 	}
-	return (0);
+	return (NULL);
 }
 
 void	ft_create(t_general	*gen)
@@ -72,9 +72,14 @@ void	ft_create(t_general	*gen)
 		i++;
 	}
 	i = 0;
+	while (1)
+	{
+		if (pilo_live(gen) == 1)
+			break ;
+	}
 	while (i < gen->philos_count)
 	{
-		if(gen->philos_count != 1)
+		if (gen->philos_count != 1)
 			pthread_join((gen->philos[i].philo), NULL);
 		i++;
 	}
