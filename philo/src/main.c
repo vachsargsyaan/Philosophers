@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:33:43 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/08/02 15:44:04 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/03 13:48:06 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,7 @@ int	main(int argc, char **argv)
 		pilos_init(&gen, argv);
 		fork_init(&gen);
 		ft_create(&gen);
-		if (pilo_live(&gen) == 1)
-			return (0);
+		destroy_prog(&gen);
 	}
 	else
 	{

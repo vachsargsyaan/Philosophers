@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 16:36:15 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/08/02 15:25:38 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/02 19:14:45 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <time.h>
+
+typedef void	*(*t_phtread_help)(void *);
 
 typedef struct s_philo
 {
@@ -64,5 +66,7 @@ int				pilo_die(t_philo *philo);
 void			ft_usleep(unsigned long sleap, t_philo	*philo);
 long long int	get_time(void);
 int				pilo_live(t_general	*gen);
+int				max_eat(t_general	*gen);
+void			destroy_prog(t_general	*gen);
 
 #endif

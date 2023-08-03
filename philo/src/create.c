@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 16:40:27 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/08/02 15:45:57 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:33:55 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,12 @@ void	check_all_live(t_philo	*philo, char *str)
 {
 	pthread_mutex_lock(philo->mutex_write);
 	if (pilo_die(philo) == 0)
-		printf("[%d] : %s", philo->id, str);
+		printf("[%d] : [%lld]  %s", philo->id, get_time(), str);
 	pthread_mutex_unlock(philo->mutex_write);
 }
 
-void	*routine(void (*a))
+void	*routine(t_philo *philo)
 {
-	t_philo	*philo;
-
-	philo = (t_philo *)a;
 	if (philo->id % 2 == 0)
 		usleep(1000);
 	while (!pilo_die(philo))
@@ -68,13 +65,13 @@ void	ft_create(t_general	*gen)
 	while (i < gen->philos_count)
 	{
 		pthread_create(&gen->philos[i].philo, NULL,
-			&routine, (void*)(&gen->philos[i]));
+			(t_phtread_help)routine, (&gen->philos[i]));
 		i++;
 	}
 	i = 0;
 	while (1)
 	{
-		if (pilo_live(gen) == 1)
+		if (pilo_live(gen) == 1 || max_eat(gen) == 1)
 			break ;
 	}
 	while (i < gen->philos_count)
