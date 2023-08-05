@@ -3,13 +3,13 @@ NAME	= philo_bonus
 SRC_DIR = src_bonus
 SRC = $(wildcard $(SRC_DIR)/*.c)
 
-OBJ_DIR	= obj
+OBJ_DIR	= obj_bonus
 OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 CC		= cc
 HEADER	= $(wildcard includes/*.h)
 INCLUDE	= -Iincludes
-CFLAGS	= -Wall -Wextra -Werror $(INCLUDE)
+CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=thread $(INCLUDE)
 MK		= mkdir -p
 
 all: $(OBJ_DIR) $(NAME)
