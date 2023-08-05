@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:30:22 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/08/02 15:25:28 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/03 17:13:41 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,9 @@ void	ft_usleep(unsigned long sleap, t_philo	*philo)
 {
 	unsigned long	value;
 
+	(void)philo;
 	value = get_time();
-	while (!pilo_die(philo))
-	{
-		if (get_time() - value <= sleap)
-			usleep(50);
-		else
-			break ;
-	}
+	usleep(950);
+	while (get_time() - value < sleap)
+		usleep(10);
 }

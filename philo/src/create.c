@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 16:40:27 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/08/02 18:33:55 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/03 17:14:15 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	check_all_live(t_philo	*philo, char *str)
 void	*routine(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
-		usleep(1000);
+		ft_usleep(philo->time_eat, philo);
 	while (!pilo_die(philo))
 	{	
 		pthread_mutex_lock(philo->mutex_left);
