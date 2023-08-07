@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 17:20:14 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/08/05 18:15:23 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:15:52 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 # include <time.h>
 # include <signal.h>
 # include <semaphore.h>
+
+# define SEM_WRITE "/sem_write"
+# define LAST_EAT "/sem_last_eat"
+# define SEM_EAT "/sem_eat"
+# define SEM_FORK "/sem_fork"
 
 typedef struct s_philo
 {
@@ -52,6 +57,6 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 long	ft_atoi(const char *str);
 void	general_init(t_general	*gen, char **str);
 void	pilos_init(t_philo	*philo, char **str, int philos_count);
-void	sema_init(t_philo	*philo, char **str, int philos_count);
+void	sema_init(t_philo	*philo, int philos_count);
 
 #endif

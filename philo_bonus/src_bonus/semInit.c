@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 17:28:03 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/08/05 18:15:43 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:15:39 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,23 @@ void	pilos_init(t_philo	*philo, char **str, int philos_count)
 	philo->last_eat = 0;
 	philo->time_eat = ft_atoi(str[3]);
 	philo->time_sleep = ft_atoi(str[4]);
-	sema_init(philo, str, philos_count);
+	sema_init(philo, philos_count);
 }
-void sema_init(t_philo	*philo, char **str, int philos_count)
+
+void	sema_init(t_philo	*philo, int philos_count)
 {
-	(void)philo;
-	(void)str;
-	(void)philos_count;
+	sem_unlink(SEM_EAT);
+	sem_unlink(LAST_EAT);
+	sem_unlink(SEM_WRITE);
+	sem_unlink(SEM_FORK);
+	philo->sem_eat = sem_open(SEM_EAT, O_CREAT, S_IRWXU, 1);
+	philo->sem_last_eat = sem_open(LAST_EAT, O_CREAT, S_IRWXU, 1);
+	philo->sem_write = sem_open(SEM_WRITE, O_CREAT, S_IRWXU, 1);
+	philo->sem_fork = sem_open(SEM_FORK, O_CREAT, S_IRWXU, philos_count);
+	if (philo->sem_eat == SEM_FAILED || philo->sem_last_eat == SEM_FAILED
+		|| philo->sem_write == SEM_FAILED || philo->sem_fork == SEM_FAILED)
+	{
+		perror("sem_open()");
+		exit (EXIT_FAILURE);
+	}
 }

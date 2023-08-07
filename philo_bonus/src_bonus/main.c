@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:04:23 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/08/05 18:09:18 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/07 15:38:52 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	main(int argc, char **argv)
 		if (has_zero(argv) == 0)
 			return (0);
 		general_init(&gen, argv);
+		start_fork(&gen);
 	}
 	else
 	{
