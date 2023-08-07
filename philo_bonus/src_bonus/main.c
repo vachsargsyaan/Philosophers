@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:04:23 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/08/07 15:38:52 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/07 17:28:20 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	main(int argc, char **argv)
 {
 	t_general	gen;
 
+	get_time();
 	if (argc == 5 || argc == 6)
 	{
 		if (check_valid(argv) == 0)
