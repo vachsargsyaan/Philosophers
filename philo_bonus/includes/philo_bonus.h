@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 17:20:14 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/08/07 19:21:18 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/08 18:02:48 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,21 @@
 # define SEM_EAT "/sem_eat"
 # define SEM_FORK "/sem_fork"
 
-typedef void	*(*t_phtread_help)(void *);
-
 typedef struct s_philo
 {
-	pid_t		pid;
-	int			id;
-	int			last_eat;
-	int			time_eat;
-	int			time_sleep;
-	int			count_must_eat;
-	pthread_t	philo;
-	sem_t		*sem_eat;
-	sem_t		*sem_last_eat;
-	sem_t		*sem_write;
-	sem_t		*sem_fork;
+	pid_t			pid;
+	int				id;
+	int				max_eat;
+	long long		time_die;
+	long long		last_eat;
+	long long		time_eat;
+	int				time_sleep;
+	int				count_must_eat;
+	pthread_t		philo;
+	sem_t			*sem_eat;
+	sem_t			*sem_last_eat;
+	sem_t			*sem_write;
+	sem_t			*sem_fork;
 }t_philo;
 
 typedef struct s_general
@@ -65,4 +65,6 @@ long long int	get_time(void);
 void			ft_usleep(unsigned long sleap, t_philo	*philo);
 void			fork_print(t_philo *philo);
 void			philo_kill(t_general *gen);
+void			sema_close_free(t_general *gen);
+
 #endif

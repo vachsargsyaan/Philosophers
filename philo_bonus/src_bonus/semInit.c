@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 17:28:03 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/08/06 20:15:39 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:36:26 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ void	general_init(t_general	*gen, char **str)
 	{
 		gen->philos[i].id = i + 1;
 		gen->philos[i] = philo;
+		gen->philos[i].time_die = ft_atoi(str[2]);
+		if (str[5])
+		gen->philos[i].max_eat = ft_atoi(str[5]);
+		else
+			gen->philos[i].max_eat = -1;
 		i++;
 	}
 }
@@ -37,7 +42,7 @@ void	general_init(t_general	*gen, char **str)
 void	pilos_init(t_philo	*philo, char **str, int philos_count)
 {
 	philo->count_must_eat = 0;
-	philo->last_eat = 0;
+	philo->last_eat = get_time();
 	philo->time_eat = ft_atoi(str[3]);
 	philo->time_sleep = ft_atoi(str[4]);
 	sema_init(philo, philos_count);

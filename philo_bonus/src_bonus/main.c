@@ -6,7 +6,7 @@
 /*   By: vacsargs <vacsargs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:04:23 by vacsargs          #+#    #+#             */
-/*   Updated: 2023/08/07 17:28:20 by vacsargs         ###   ########.fr       */
+/*   Updated: 2023/08/08 16:44:05 by vacsargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int argc, char **argv)
 			return (0);
 		general_init(&gen, argv);
 		start_fork(&gen);
+		sema_close_free(&gen);
 	}
 	else
 	{
